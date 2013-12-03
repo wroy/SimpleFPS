@@ -42,7 +42,7 @@ public class BotAIFlee : MonoBehaviour {
 	
 	void Update ()
 	{
-		transform.LookAt(PlannedDestination);// point the bot towards the destination
+		transform.LookAt(GetComponent <NavMeshAgent>().steeringTarget);// point the bot towards the destination
 		distanceFromPlayer = Vector3.Distance(player.position, gameObject.transform.position); //find the distance between bot and player
 		if (distanceFromPlayer < 10.0f){
 			//if the distance between bot and player is less then 10, face the player
