@@ -42,12 +42,12 @@ public class BotAIWander : MonoBehaviour {
 	void Update ()
 	{
 		//look towards the player and determine distance between bot and player
-		transform.LookAt(PlannedDestination);
+		transform.LookAt(GetComponent <NavMeshAgent>().steeringTarget);
 		distanceFromPlayer = Vector3.Distance(player.position, gameObject.transform.position);
 		
 		if (distanceFromPlayer < 5.0f){
 			//if bot is within 5 units, stop moving closer and shoot at player
-			transform.LookAt(GetComponent <NavMeshAgent>().steeringTarget);
+			transform.LookAt(player);
 			GetComponent <NavMeshAgent>().destination = gameObject.transform.position;
 			shoot ();
 		}
